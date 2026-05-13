@@ -18,6 +18,11 @@ const envSchema = z.object({
   STUDIO_FRONTEND_URL: z.string().url().default('https://3speak.tv'),
   MONGODB_URI: z.string().default(''),
   PORT: z.coerce.number().default(3002),
+  // 3Speak Pro one-time trial. ENABLE_PRO_TESTING=true exposes
+  // POST /premium/start-testing for any signed-in user; PRO_TESTING_DURATION_HOURS
+  // bounds the trial window (defaults to a single day).
+  ENABLE_PRO_TESTING: z.coerce.boolean().default(false),
+  PRO_TESTING_DURATION_HOURS: z.coerce.number().positive().default(24),
 });
 
 const parsed = envSchema.safeParse(process.env);

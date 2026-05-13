@@ -8,6 +8,7 @@ import { roomRoutes } from './routes/rooms.js';
 import { participantRoutes } from './routes/participants.js';
 import { recordingRoutes } from './routes/recording.js';
 import { streamingRoutes } from './routes/streaming.js';
+import { premiumRoutes } from './routes/premium.js';
 
 const server = Fastify({ logger: true });
 
@@ -23,5 +24,6 @@ await server.register(roomRoutes);
 await server.register(participantRoutes);
 await server.register(recordingRoutes);
 await server.register(streamingRoutes);
+await server.register(premiumRoutes);
 
 await server.listen({ port: config.PORT, host: '0.0.0.0' });
